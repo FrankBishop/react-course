@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState} from "react";
 import {useForm} from "./useForm";
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import {Hello} from "./hello";
 
 function App() {
@@ -17,12 +17,18 @@ function App() {
 
   //console.logs once when it mounts
 
-  // useEffect(() => {
-  //   console.log('render')
-  //   return  () => {
-  //     console.log('unmount')
-  //   };
-  // }, []);
+  useEffect(() => {
+    // console.log('render')
+    const onMouseMove = e =>  {
+      console.log(e);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    return  () => {
+      // console.log('unmount')
+      window.removeEventListener('mousemove', onMouseMove);
+    };
+  }, []);
 
   return (
     <div>
