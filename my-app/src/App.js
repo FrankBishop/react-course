@@ -1,15 +1,15 @@
 import './App.css';
-import React, {useState} from "react";
-import {useForm} from "./useForm";
+import React, { useState } from "react";
+import { useForm } from "./useForm";
 import { useEffect } from 'react';
-import {Hello} from "./hello";
+import { Hello } from "./hello";
 
 function App() {
   const [number, setNumber] = useState(50);
   const [number2, setNumber2] = useState(70);
-  const [values, handleChange] = useForm({email: '', password: ''});
+  const [values, handleChange] = useForm({ email: '', password: '' });
 
-  const [showHello, setShowHello] =  useState(true);
+  const [showHello, setShowHello] = useState(true);
 
   // useEffect( () => {
   //   console.log('render')
@@ -17,18 +17,26 @@ function App() {
 
   //console.logs once when it mounts
 
-  useEffect(() => {
-    // console.log('render')
-    const onMouseMove = e =>  {
-      console.log(e);
-    };
+  // useEffect(() => {
+  //   // console.log('render')
+  //   const onMouseMove = e =>  {
+  //     console.log(e);
+  //   };
 
-    window.addEventListener('mousemove', onMouseMove);
-    return  () => {
-      // console.log('unmount')
-      window.removeEventListener('mousemove', onMouseMove);
-    };
-  }, []);
+  //   window.addEventListener('mousemove', onMouseMove);
+  //   return  () => {
+  //     // console.log('unmount')
+  //     window.removeEventListener('mousemove', onMouseMove);
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    console.log('mount 1');
+  }, [])
+
+  useEffect(() => {
+    console.log('mount 2');
+  }, [])
 
   return (
     <div>
@@ -36,12 +44,12 @@ function App() {
         Toggle
       </button>
       {showHello && <Hello />}
-      <button onClick = {() => {
-        setNumber(n => n+1)
-        setNumber2(n => n+2)
+      <button onClick={() => {
+        setNumber(n => n + 1)
+        setNumber2(n => n + 2)
       }}>
 
-      Add
+        Add
       </button>
 
       <div>
@@ -56,7 +64,7 @@ function App() {
       </div>
 
     </div>
- );
+  );
 }
 
 export default App;
